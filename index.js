@@ -14,7 +14,7 @@ moment.updateLocale('es', {
 
 //fichar a las 8 y a las 16 de lunes a viernes
 cron.schedule('0 8,16 * * 1-5', () => {
-    if (!moment().isBusinessDay()) {
+    if (moment().isBusinessDay()) {
         fichaje.fichar('user','*******').then(() => {
             console.log(moment().format() + ' => Fichaje OK');
         }).catch((err) => {
